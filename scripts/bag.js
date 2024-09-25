@@ -64,10 +64,17 @@ function loadBagItemObjects() {
 function displayBagItems() {
   let containerElement = document.querySelector('.bag-items-container');
   let innerHTML = '';
-  bagItemObjects.forEach(bagItem => {
-    innerHTML += generateItemHTML(bagItem);
-  });
+
+  if (bagItemObjects.length === 0) {
+    innerHTML = `<div class="no-items-message">There is Nothing in your Bag. <br> Let's add some items. </div>`;
+  } else {
+    bagItemObjects.forEach(bagItem => {
+      innerHTML += generateItemHTML(bagItem);
+    });
+  }
+ 
   containerElement.innerHTML = innerHTML;
+
 }
 
 function removeFromBag(itemId) {
